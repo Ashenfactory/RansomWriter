@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RansomWriter</title>
+    <meta charset="utf-8">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="column column-main">
+                <label for="textInput">Text</label>
+                <textarea class="input-block" id="textInput" placeholder="We have your magazines, send money or we'll cut out more letters" name="text"></textarea>
+                <label for="fontsInput">Fonts</label>
+                <select class="input-block" id="fontsInput" multiple name="fonts"></select>
+                <div class="row">
+                    <div class="column">
+                        <button class="button button-outline" id="invertFonts" type="button">Toggle Fonts</button>
+                    </div>
+                    <div class="column">
+                        <button class="button button-outline" id="selectAllFonts" type="button">All Fonts</button>
+                    </div>
+                </div>
+                <div id="settingsOptions">
+                    <label>Randomization Options</label>
+                    <div class="row">
+                        <div class="column">
+                            <input id="coloredInput" type="checkbox" name="colored"><label class="label-inline" for="coloredInput">Colored</label>
+                        </div>
+                        <div class="column">
+                            <input id="tiltedInput" type="checkbox" name="tilted"><label class="label-inline" for="tiltedInput">Tilted</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <input id="casedInput" type="checkbox" name="cased"><label class="label-inline" for="casedInput">Cased</label>
+                        </div>
+                        <div class="column">
+                            <input id="spacedInput" type="checkbox" name="spaced"><label class="label-inline" for="spacedInput">Spaced</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <input id="sizedInput" type="checkbox" name="sized"><label class="label-inline" for="sizedInput">Sized</label>
+                        </div>
+                        <div class="column">
+                            <input id="groupedInput" type="checkbox" name="grouped"><label class="label-inline" for="groupedInput">Grouped</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <button class="button button-outline" id="invertOptions" type="button">Toggle Options</button>
+                        </div>
+                        <div class="column">
+                            <button class="button button-outline" id="selectAllOptions" type="button">All Options</button>
+                        </div>
+                    </div>
+                </div>
+                <label for="alignInput">Text Alignment</label>
+                <select id="alignInput" name="align">
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                </select>
+                <label for="widthInput">Text Width (px)</label>
+                <input id="widthInput" type="number" name="width" min="1" placeholder="Auto">
+                <label for="sizeInput">Font Size (px)</label>
+                <input id="sizeInput" type="number" name="size" min="1" placeholder="50">
+                <div class="row">
+                    <div class="column">
+                        <button id="reloadText" class="button">Reload</button>
+                    </div>
+                    <div class="column">
+                        <button class="button button-outline" id="saveImage" type="button">Save Image</button>
+                    </div>
+                </div>
+            </div>
+            <div class="textOutput column column-main">
+               <div id="textOutput"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.5.2/dom-to-image.min.js"></script>
+    <script src="js/script.min.js"></script>
+</body>
+</html>
