@@ -356,6 +356,26 @@ function applyCases() {
   });
 }
 
+function applyStyles() {
+  var elements = document.getElementById('textOutput').querySelectorAll('.letter');
+
+  forEach(elements, function (index, value) {
+    if (randomPercentage(30)) {
+      value.style.fontStyle = 'italic';
+    } else {
+      value.style.fontStyle = 'normal';
+    }
+  });
+}
+
+function applyWeights() {
+  var elements = document.getElementById('textOutput').querySelectorAll('.letter');
+
+  forEach(elements, function (index, value) {
+    value.style.fontWeight = (Math.floor(m.random() * 9)) * 100;
+  });
+}
+
 function formatText() {
   var formattedText = '<div class="word">';
   var letterGroup = false;
@@ -423,6 +443,14 @@ function formatText() {
 
   if (settings.sized) {
     applySizes();
+  }
+
+  if (settings.styled) {
+    applyStyles();
+  }
+
+  if (settings.weighted) {
+    applyWeights();
   }
 }
 
@@ -656,6 +684,8 @@ var settings = {
   'colored': (qd.colored && qd.colored[0] !== undefined) ? true : false,
   'sized': (qd.sized && qd.sized[0] !== undefined) ? qd.sized[0] : false,
   'grouped': (qd.grouped && qd.grouped[0] !== undefined) ? qd.grouped[0] : false,
+  'styled': (qd.styled && qd.styled[0] !== undefined) ? qd.styled[0] : false,
+  'weighted': (qd.weighted && qd.weighted[0] !== undefined) ? qd.weighted[0] : false,
   'seed': (qd.seed && qd.seed[0] !== undefined) ? qd.seed[0] : undefined,
   'text': (qd.text && qd.text[0] !== undefined) ? qd.text[0] : undefined,
   'size': (qd.size && qd.size[0] !== undefined) ? qd.size[0] : 50,
@@ -716,6 +746,8 @@ document.getElementById('casedInput').checked = settings.cased;
 document.getElementById('spacedInput').checked = settings.spaced;
 document.getElementById('sizedInput').checked = settings.sized;
 document.getElementById('groupedInput').checked = settings.sized;
+document.getElementById('styledInput').checked = settings.styled;
+document.getElementById('weightedInput').value = settings.weighted;
 document.getElementById('alignInput').value = settings.align;
 document.getElementById('widthInput').value = settings.width;
 document.getElementById('sizeInput').value = settings.size;
@@ -820,14 +852,42 @@ document.getElementById('casedInput').addEventListener('change', function() {
 
 document.getElementById('spacedInput').addEventListener('change', function() {
   if (this.checked) {
-    settings.spaces = true;
+    settings.spaced = true;
     applySpaces();
   } else {
-    settings.spaces = false;
+    settings.spaced = false;
     var elements = document.getElementById('textOutput').querySelectorAll('.space');
 
     forEach(elements, function(index, value) {
       value.innerHTML = '&nbsp;';
+    });
+  }
+});
+
+document.getElementById('styledInput').addEventListener('change', function() {
+  if (this.checked) {
+    settings.styled = true;
+    applyStyles();
+  } else {
+    settings.styled = false;
+    var elements = document.getElementById('textOutput').querySelectorAll('.letter');
+
+    forEach(elements, function(index, value) {
+      value.style.fontStyle = null;
+    });
+  }
+});
+
+document.getElementById('weightedInput').addEventListener('change', function() {
+  if (this.checked) {
+    settings.weighted = true;
+    applyWeights();
+  } else {
+    settings.weighted = false;
+    var elements = document.getElementById('textOutput').querySelectorAll('.letter');
+
+    forEach(elements, function(index, value) {
+      value.style.fontWeight = null;
     });
   }
 });
