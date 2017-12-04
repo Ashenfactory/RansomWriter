@@ -1,3 +1,6 @@
+document.getElementById('no-js').remove();
+document.documentElement.className = 'js';
+
 /**
  * JavaScript code to detect available availability of a
  * particular font in a browser using JavaScript and CSS.
