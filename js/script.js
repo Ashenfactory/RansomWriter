@@ -710,21 +710,16 @@ if (settings.fonts) {
 var fontsInput = document.getElementById('fontsInput');
 var checkboxes = document.getElementById('settingsOptions').querySelectorAll('input[type=checkbox]');
 
+var fontsHTML = '';
+
 for (var i = 0; i < testFonts.length; i++) {
   if (d.detect(testFonts[i])) {
-    var option = document.createElement('option');
-
-    option.text = testFonts[i];
-    option.value = i;
-    option.style.fontFamily = '"' + testFonts[i] + '"';
-
-    if (settings.fonts && settings.fonts.indexOf(i) !== -1) {
-      option.selected = true;
-    }
-
-    fontsInput.add(option, null);
+    fontsHTML += '<option value="' + i + '" style="font-family: \'' + testFonts[i] + '\';"' +
+    (settings.fonts && settings.fonts.indexOf(i) !== -1 ? ' selected' : '') + '>' + testFonts[i] + '</option>';
   }
 }
+
+fontsInput.insertAdjacentHTML('afterbegin', fontsHTML);
 
 document.getElementById('textOutput').style.textAlign = settings.align;
 
