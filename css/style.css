@@ -60,6 +60,10 @@ select:focus {
   vertical-align: middle;
 }
 
+.letter {
+  overflow: hidden;
+}
+
 @media (min-width: 40rem) {
   .column-main.textOutput > div {
     overflow: auto;
@@ -115,4 +119,4 @@ select:focus {
   } to {
     opacity: 100;
   }
-};
+}

@@ -526,9 +526,6 @@ function invertOptions(checkboxes) {
   }
 }
 
-var qd = {};
-if (location.search) location.search.substr(1).split("&").forEach(function(item) {var s = item.split("="), k = s[0], v = s[1] && decodeURIComponent(s[1]); (qd[k] = qd[k] || []).push(v);});
-
 var d = new Detector();
 
 var whites = [
@@ -680,20 +677,20 @@ var spaces = [
 ];
 
 var settings = {
-  'cased': (qd.cased && qd.cased[0] !== undefined) ? true : false,
-  'tilted': (qd.tilted && qd.tilted[0] !== undefined) ? true : false,
-  'spaced': (qd.spaced && qd.spaced[0] !== undefined) ? true : false,
-  'fonts': (qd.fonts && qd.fonts[0] !== undefined) ? qd.fonts : false,
-  'colored': (qd.colored && qd.colored[0] !== undefined) ? true : false,
-  'sized': (qd.sized && qd.sized[0] !== undefined) ? qd.sized[0] : false,
-  'grouped': (qd.grouped && qd.grouped[0] !== undefined) ? qd.grouped[0] : false,
-  'styled': (qd.styled && qd.styled[0] !== undefined) ? qd.styled[0] : false,
-  'weighted': (qd.weighted && qd.weighted[0] !== undefined) ? qd.weighted[0] : false,
-  'seed': (qd.seed && qd.seed[0] !== undefined) ? qd.seed[0] : undefined,
-  'text': (qd.text && qd.text[0] !== undefined) ? qd.text[0] : undefined,
-  'size': (qd.size && qd.size[0] !== undefined) ? qd.size[0] : 50,
-  'width': (qd.width && qd.width[0] !== undefined) ? qd.width[0] : 'auto',
-  'align': (qd.align && qd.align[0] !== undefined) ? qd.align[0] : 'left'
+  'cased': true,
+  'tilted': true,
+  'spaced': true,
+  'fonts': false,
+  'colored': true,
+  'sized': true,
+  'grouped': true,
+  'styled': true,
+  'weighted': true,
+  'seed': undefined,
+  'text': undefined,
+  'size': 50,
+  'width': 'auto',
+  'align': 'left'
 };
 
 var m = new MersenneTwister(settings.seed);
@@ -745,7 +742,7 @@ document.getElementById('spacedInput').checked = settings.spaced;
 document.getElementById('sizedInput').checked = settings.sized;
 document.getElementById('groupedInput').checked = settings.sized;
 document.getElementById('styledInput').checked = settings.styled;
-document.getElementById('weightedInput').value = settings.weighted;
+document.getElementById('weightedInput').checked = settings.weighted;
 document.getElementById('alignInput').value = settings.align;
 document.getElementById('widthInput').value = settings.width;
 document.getElementById('sizeInput').value = settings.size;
